@@ -9,12 +9,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kurkle/color": "^0.3.2",
+    "chart.js": "^4.4.1",
+    "luxon": "^3.4.4",
     "vant": "^4.8.0",
-    "vue": "^3.3.11"
+    "vue": "^3.3.11",
+    "vue-router": "^4.2.5",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@vant/auto-import-resolver": "^1.0.2",
     "@vitejs/plugin-vue": "^4.5.2",
+    "chartjs-adapter-luxon": "^1.3.1",
+    "sass": "^1.69.5",
     "typescript": "^5.2.2",
     "unplugin-vue-components": "^0.26.0",
     "vite": "^5.0.8",

@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
+import HomePage from "./components/HomePage/index.vue";
+import DragList from "./components/DragList/index.vue";
+import Chart from "./components/Chart/index.vue";
 </script>
 
 <template>
-  <van-button type="primary">主要按钮</van-button>
+  <!-- <HomePage></HomePage> -->
+  <!-- <DragList></DragList> -->
+  <Chart></Chart>
 </template>
 
 <style scoped>

@@ -11,6 +11,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 30px;
 }
 
 a {
@@ -54,15 +55,16 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.card {
+/* .card {
   padding: 2em;
-}
+} */
 
 #app {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
+  /* text-align: center; */
 }
 
 @media (prefers-color-scheme: light) {
