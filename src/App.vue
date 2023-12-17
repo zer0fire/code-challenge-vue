@@ -1,26 +1,26 @@
 <script setup lang="ts">
+import { ref, computed } from "vue";
 import HomePage from "./components/HomePage/index.vue";
-import DragList from "./components/DragList/index.vue";
 import Chart from "./components/Chart/index.vue";
+import DragList from "./components/DragList/index.vue";
+const routes = {
+  "/": HomePage,
+  "/chart": Chart,
+  "/drag": DragList,
+};
+const currentPath = ref(window.location.hash);
+window.addEventListener("hashchange", () => {
+  currentPath.value = window.location.hash;
+});
+const currentView = computed(() => {
+  return (
+    // @ts-ignore
+    (routes[(currentPath.value.slice(1) as any) || "/"] as any) || HomePage
+  );
+});
 </script>
-
 <template>
-  <!-- <HomePage></HomePage> -->
-  <!-- <DragList></DragList> -->
-  <Chart></Chart>
+  <a href="#/">Home</a> | <a href="#/chart">About</a> |
+  <a href="#/drag">Broken Link</a>
+  <component :is="currentView" />
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
