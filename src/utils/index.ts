@@ -1,17 +1,29 @@
+import Dexie, { Table } from "dexie";
+
+export interface ListItem {
+  content: number;
+}
+
+export class DexieDB extends Dexie {
+  list!: Table<ListItem>;
+
+  constructor() {
+    super("listDB");
+    this.version(1).stores({
+      list: "++id, name, age", // Primary key and indexed props
+    });
+  }
+}
+
 export function initDB() {
-  let db;
-  const request = window.indexedDB.open("MyTestDatabase", 3);
-  request.onerror = (event: any) => {
-    console.error("为什么不允许我的 web 应用使用 IndexedDB！");
-  };
-  request.onsuccess = (event: any) => {
-    db = event.target.result;
-
-    db.onerror = (event: any) => {
-      // 针对此数据库请求的所有错误的通用错误处理器！
-      console.error(`数据库错误：${event.target.errorCode}`);
-    };
-
-    const transaction = db.transaction(["customers"], "readwrite");
+  const db = new DexieDB();
+  return {
+    getList: async function () {
+      const res = await db.list.toArray();
+      return res;
+    },
+    addItem: async function (list: ListItem) {
+      db.list.add(list);
+    },
   };
 }
