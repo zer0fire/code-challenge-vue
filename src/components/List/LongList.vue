@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref, Ref } from "vue";
-import { initDB, ListItem } from "../../utils/index";
+import { onMounted, ref, Ref } from 'vue';
+import { initDB, ListItem } from '../../utils/index';
 
 type AddFnType = (list: ListItem) => Promise<void>;
 
@@ -13,7 +13,7 @@ const refreshing = ref(false);
 onMounted(() => {
   const { getList, addItem } = initDB();
   getList().then((dbList) => {
-    list.value = dbList;
+    list.value = dbList.slice(0, 10);
     addItemRef.value = addItem;
   });
 });
