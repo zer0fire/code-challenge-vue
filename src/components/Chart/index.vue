@@ -37,7 +37,7 @@ const chartRef: Ref<Chart<"bar", number[], string> | null> = ref(null);
 onMounted(() => {
   const ctx = ctxRef.value!.getContext("2d");
   // Chart.defaults.elements.point.radius = 5;
-  chartRef.value = ctx && new Chart(ctx, config);
+  chartRef.value = ctx && new Chart(ctx, config as any);
 });
 </script>
 <template>
