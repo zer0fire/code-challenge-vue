@@ -39,38 +39,38 @@ function move(drag: any, drop: any) {
 }
 </script>
 <template>
-  <button class="btn btn-secondary" @click="add">Add</button>
-  <!-- <button class="btn btn-secondary" @click="replace">Replace</button> -->
-  <div class="col-6">
-    <draggable
-      :list="list"
-      :disabled="!enabled"
-      item-key="name"
-      class="list-group"
-      ghost-class="ghost"
-      :move="move"
-      @start="dragging = true"
-      @end="dragging = false"
-    >
-      <template #item="{ element }">
-        <div class="list-group-item" :class="{ 'not-draggable': !enabled }">
-          {{ element.name }}
-        </div>
-      </template>
-    </draggable>
-  </div>
+  <draggable
+    :list="list"
+    :disabled="!enabled"
+    item-key="name"
+    class="list-group"
+    ghost-class="ghost"
+    :move="move"
+    @start="dragging = true"
+    @end="dragging = false"
+  >
+    <template #item="{ element }">
+      <div class="list-group-item draggable">
+        {{ element.name }}
+      </div>
+    </template>
+  </draggable>
+  <van-button type="primary" class="btn btn-secondary" @click="add"
+    >Add</van-button
+  >
 </template>
 <style scoped>
-.buttons {
-  margin-top: 35px;
+.list-group {
+  margin: 10px;
 }
-
-.ghost {
-  opacity: 0.5;
-  background: #c8ebfb;
+.list-group-item {
+  width: 5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: white;
+  background-color: #ff833d;
 }
-
-.not-draggable {
-  cursor: no-drop;
+.draggable {
+  cursor: pointer;
 }
 </style>

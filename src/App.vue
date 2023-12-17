@@ -3,10 +3,12 @@ import { ref, computed } from "vue";
 import HomePage from "./components/HomePage/index.vue";
 import Chart from "./components/Chart/index.vue";
 import DragList from "./components/DragList/index.vue";
+import LongList from "./components/List/LongList.vue";
 const routes = {
   "/": HomePage,
   "/chart": Chart,
   "/drag": DragList,
+  "/LongList": LongList,
 };
 const currentPath = ref(window.location.hash);
 window.addEventListener("hashchange", () => {
@@ -20,7 +22,8 @@ const currentView = computed(() => {
 });
 </script>
 <template>
-  <a href="#/">Home</a> | <a href="#/chart">About</a> |
-  <a href="#/drag">Broken Link</a>
+  <a href="#/">Home</a> | <a href="#/chart">Chart</a> |
+  <a href="#/drag">Drag List</a> |
+  <a href="#/LongList">LongList</a>
   <component :is="currentView" />
 </template>
