@@ -29,10 +29,10 @@ const onLoad = () => {
       finished.value = true;
     } else {
       for (let i = 0; i < 10; i++) {
-        list.value.push({ content: list.value.length + 1 });
+        const item = { content: list.value.length + 1 };
+        list.value.push(item);
+        addItemRef.value && addItemRef.value(item);
         // store list value
-        addItemRef.value &&
-          addItemRef.value({ content: list.value.length + 1 });
       }
     }
     loading.value = false;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import draggable from "vuedraggable";
-let id = 3;
+let id = Number(window.localStorage.getItem("dragIndex")) || 3;
 let enabled = true;
 const localItem = window.localStorage.getItem("dragList");
 const localList = localItem && JSON.parse(localItem);
@@ -15,14 +15,17 @@ let list = ref(
 let dragging = false;
 
 function swap(list: Array<number>, i: number, j: number) {
-  let temp = list[i];
-  list[i] = list[j];
-  list[j] = temp;
+  if (list[i] && list[j]) {
+    let temp = list[i];
+    list[i] = list[j];
+    list[j] = temp;
+  }
   return list;
 }
 
 function add() {
   list.value.push({ name: "列表项 " + id, id: id++ });
+  window.localStorage.setItem("dragIndex", String(id));
   window.localStorage.setItem("dragList", JSON.stringify(list.value));
 }
 // function replace() {
@@ -42,7 +45,7 @@ function move(drag: any, drop: any) {
   <draggable
     :list="list"
     :disabled="!enabled"
-    item-key="name"
+    item-key="id"
     class="list-group"
     ghost-class="ghost"
     :move="move"
@@ -51,7 +54,7 @@ function move(drag: any, drop: any) {
   >
     <template #item="{ element }">
       <div class="list-group-item draggable">
-        {{ element.name }}
+        {{ element && element.name }}
       </div>
     </template>
   </draggable>

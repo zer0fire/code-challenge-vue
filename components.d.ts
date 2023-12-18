@@ -10,6 +10,7 @@ declare module 'vue' {
     Chart: typeof import('./src/components/Chart/index.vue')['default']
     DragList: typeof import('./src/components/DragList/index.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    HighLevelCalculator: typeof import('./src/components/HighLevelCalculator/index.vue')['default']
     HomePage: typeof import('./src/components/HomePage/index.vue')['default']
     List: typeof import('./src/components/List/index.vue')['default']
     LongList: typeof import('./src/components/List/LongList.vue')['default']
