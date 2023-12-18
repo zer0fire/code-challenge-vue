@@ -26,6 +26,6 @@ const currentView = computed(() => {
 <template>
   <a href="#/">Home</a> | <a href="#/chart">Chart</a> |
   <a href="#/drag">Drag List</a> | <a href="#/LongList">LongList</a> |
-  <a href="#/cal">cal</a>
+  <!-- <a href="#/cal">cal</a> -->
   <component :is="currentView" />
 </template>
